@@ -14,6 +14,8 @@ typedef struct {
 	struct buku *next;
 }buku;
 
+buku *head=NULL, *tail=NULL; *baru=NULL;
+
 void welcomeMessage () {
 	printf("\t\t\t\t\t\t\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
 	printf("\n\t\t\t\t\t\t\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
@@ -23,6 +25,36 @@ void welcomeMessage () {
 	printf("\n\t\t\t\t\t\t			by : Kelompok 4A			");
 	printf("\n\n\n\n\t\t\t\t\tPress any key to continue . . .");
 	getch();
+}
+
+void insert (){
+	baru=(buku*)malloc(sizeof(buku));
+	printf("Masukkan kode buku : ");
+	fflush(stdin);
+	gets(baru->kode);
+	printf("Masukkan jenis buku : ");
+	fflush(stdin);
+	gets(baru->jenis);
+	printf("Masukkan judul buku : ");
+	fflush(stdin);
+	gets(baru->judul);
+	printf("Masukkan nama pengarang : ");
+	fflush(stdin);
+	gets(baru->pengarang);
+	printf("Masukkan nama penerbit : ");
+	fflush(stdin);
+	gets(baru->penerbit);
+	printf("Masukkan jumlah buku : ");
+	scanf("%d", baru->jumlah);
+	if(head==NULL){
+		head=tail=baru;
+		tail->next=NULL;
+	}
+	else{
+		tail->next=baru;
+		tail=baru;
+		tail->next=NULL;		
+	}
 }
 
 int hashCode (char kode[]) {
